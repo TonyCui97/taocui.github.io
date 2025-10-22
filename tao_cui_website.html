@@ -1,0 +1,599 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tao Cui - BI Engineer</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --navy: #1a2332;
+            --blue: #2563eb;
+            --gray-50: #f9fafb;
+            --gray-100: #f3f4f6;
+            --gray-300: #d1d5db;
+            --gray-600: #4b5563;
+            --gray-900: #111827;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            line-height: 1.6;
+            color: var(--gray-900);
+        }
+
+        /* Header */
+        header {
+            background: white;
+            border-bottom: 1px solid var(--gray-300);
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 100;
+        }
+
+        nav {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 1.2rem 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .name {
+            font-size: 1.1rem;
+            font-weight: 600;
+            color: var(--navy);
+        }
+
+        nav ul {
+            display: flex;
+            gap: 2rem;
+            list-style: none;
+        }
+
+        nav a {
+            color: var(--gray-600);
+            text-decoration: none;
+            font-size: 0.95rem;
+        }
+
+        nav a:hover {
+            color: var(--navy);
+        }
+
+        /* Main Content */
+        main {
+            margin-top: 70px;
+        }
+
+        section {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 4rem 2rem;
+        }
+
+        /* Intro */
+        .intro {
+            padding: 5rem 2rem 4rem;
+        }
+
+        .intro-content {
+            display: grid;
+            grid-template-columns: 1fr 180px;
+            gap: 3rem;
+            align-items: start;
+        }
+
+        .intro-text h1 {
+            font-size: 2.5rem;
+            font-weight: 600;
+            color: var(--navy);
+            margin-bottom: 0.5rem;
+        }
+
+        .intro-text .title {
+            font-size: 1.2rem;
+            color: var(--gray-600);
+            margin-bottom: 2rem;
+        }
+
+        .intro-text p {
+            font-size: 1.05rem;
+            line-height: 1.7;
+            color: var(--gray-600);
+            max-width: 700px;
+            margin-bottom: 1rem;
+        }
+
+        .intro-photo {
+            width: 180px;
+            height: 180px;
+            border-radius: 8px;
+            object-fit: cover;
+            object-position: center;
+            border: 1px solid var(--gray-300);
+        }
+
+        /* Experience */
+        .experience {
+            background: var(--gray-50);
+        }
+
+        h2 {
+            font-size: 1.5rem;
+            font-weight: 600;
+            color: var(--navy);
+            margin-bottom: 2rem;
+        }
+
+        .timeline {
+            border-left: 2px solid var(--gray-300);
+            padding-left: 2rem;
+        }
+
+        .job {
+            margin-bottom: 3rem;
+            position: relative;
+        }
+
+        .job::before {
+            content: '';
+            position: absolute;
+            left: -2.4rem;
+            top: 0.3rem;
+            width: 10px;
+            height: 10px;
+            background: var(--blue);
+            border-radius: 50%;
+        }
+
+        .job h3 {
+            font-size: 1.1rem;
+            font-weight: 600;
+            color: var(--navy);
+            margin-bottom: 0.3rem;
+        }
+
+        .job .meta {
+            font-size: 0.9rem;
+            color: var(--gray-600);
+            margin-bottom: 1rem;
+        }
+
+        .job ul {
+            list-style: none;
+            padding-left: 0;
+        }
+
+        .job li {
+            padding-left: 1.2rem;
+            margin-bottom: 0.6rem;
+            color: var(--gray-600);
+            position: relative;
+        }
+
+        .job li::before {
+            content: '•';
+            position: absolute;
+            left: 0;
+            color: var(--blue);
+        }
+
+        /* Projects */
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+            gap: 1.5rem;
+        }
+
+        .project {
+            background: white;
+            border: 1px solid var(--gray-300);
+            border-radius: 6px;
+            padding: 1.8rem;
+            transition: box-shadow 0.2s;
+        }
+
+        .project:hover {
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+        }
+
+        .project h3 {
+            font-size: 1.1rem;
+            font-weight: 600;
+            color: var(--navy);
+            margin-bottom: 0.8rem;
+        }
+
+        .project p {
+            color: var(--gray-600);
+            font-size: 0.95rem;
+            line-height: 1.6;
+            margin-bottom: 1rem;
+        }
+
+        .project .duration {
+            font-size: 0.85rem;
+            color: var(--blue);
+            font-weight: 500;
+            margin-bottom: 0.8rem;
+        }
+
+        .tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+        }
+
+        .tag {
+            font-size: 0.8rem;
+            padding: 0.3rem 0.7rem;
+            background: var(--gray-100);
+            color: var(--gray-600);
+            border-radius: 3px;
+        }
+
+        /* Skills */
+        .skills {
+            background: var(--gray-50);
+        }
+
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+        }
+
+        .skill-category h3 {
+            font-size: 1rem;
+            font-weight: 600;
+            color: var(--navy);
+            margin-bottom: 1rem;
+        }
+
+        .skill-category ul {
+            list-style: none;
+        }
+
+        .skill-category li {
+            color: var(--gray-600);
+            padding: 0.4rem 0;
+            font-size: 0.95rem;
+        }
+
+        /* Education */
+        .education-item {
+            background: white;
+            border: 1px solid var(--gray-300);
+            border-radius: 6px;
+            padding: 1.8rem;
+            max-width: 600px;
+        }
+
+        .education-item h3 {
+            font-size: 1.1rem;
+            font-weight: 600;
+            color: var(--navy);
+            margin-bottom: 0.5rem;
+        }
+
+        .education-item .degree {
+            color: var(--gray-600);
+            font-size: 0.95rem;
+            margin-bottom: 0.3rem;
+        }
+
+        .education-item .date {
+            color: var(--gray-600);
+            font-size: 0.9rem;
+        }
+
+        /* Contact */
+        .contact {
+            text-align: center;
+            padding: 4rem 2rem;
+        }
+
+        .contact-links {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            margin-top: 1.5rem;
+            flex-wrap: wrap;
+        }
+
+        .contact-links a {
+            color: var(--blue);
+            text-decoration: none;
+            font-size: 0.95rem;
+        }
+
+        .contact-links a:hover {
+            text-decoration: underline;
+        }
+
+        footer {
+            text-align: center;
+            padding: 2rem;
+            color: var(--gray-600);
+            font-size: 0.9rem;
+            border-top: 1px solid var(--gray-300);
+        }
+
+        /* Mobile */
+        @media (max-width: 768px) {
+            nav ul {
+                display: none;
+            }
+
+            .intro-content {
+                grid-template-columns: 1fr;
+                text-align: center;
+            }
+
+            .intro-photo {
+                margin: 0 auto;
+                width: 150px;
+                height: 150px;
+            }
+
+            .intro-text h1 {
+                font-size: 2rem;
+            }
+
+            .timeline {
+                padding-left: 1.5rem;
+            }
+
+            .projects-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .skills-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .intro-photo {
+                width: 120px;
+                height: 120px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <nav>
+            <div class="name">Tao Cui</div>
+            <ul>
+                <li><a href="#about">About</a></li>
+                <li><a href="#experience">Experience</a></li>
+                <li><a href="#projects">Projects</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <section id="about" class="intro">
+            <div class="intro-content">
+                <div class="intro-text">
+                    <h1>Tao Cui</h1>
+                    <div class="title">Senior Power BI / Azure Developer</div>
+                    <p>Self-motivated data professional with hands-on experience in building scalable data pipelines and Power BI solutions using Microsoft Fabric and Azure. Currently at Enercare focusing on delivering actionable insights across customer service, field operations, and sales.</p>
+                    <p>Based in Toronto. Skilled in Power BI, Azure, SQL, and Python with a proven ability to streamline data pipelines and deliver business insights that drive strategic decisions.</p>
+                </div>
+                <img src="profile.jpg" alt="Tao Cui" class="intro-photo">
+            </div>
+        </section>
+
+        <section id="experience" class="experience">
+            <h2>Experience</h2>
+            <div class="timeline">
+                <div class="job">
+                    <h3>Sr. Power BI / Azure Developer</h3>
+                    <div class="meta">Enercare Inc. • April 2024 - Present</div>
+                    <ul>
+                        <li>Built reusable data pipelines with Azure SQL, Lakehouse, and notebook integration</li>
+                        <li>Managed projects through Azure DevOps with clear goals and timelines</li>
+                        <li>Collaborated with business stakeholders to gather requirements and develop Power BI dashboards with CI/CD process (Git integration)</li>
+                        <li>Delivered analytical insights on technician productivity, workforce efficiency, customer satisfaction, and Google review trends — enabling executives to refine strategic and operational plans</li>
+                        <li>Migrated Power BI workspaces from PPU to Fabric, including deployment pipeline setup</li>
+                        <li>Utilized Python in Fabric Notebooks to perform data transformations and store outputs in Lakehouse</li>
+                        <li>Monitored Fabric capacity and optimized performance of top 5 high-load reports</li>
+                    </ul>
+                </div>
+
+                <div class="job">
+                    <h3>Customer Service BI Analyst</h3>
+                    <div class="meta">Mercedes-Benz Canada • November 2022 - April 2024</div>
+                    <ul>
+                        <li>Delivered business-critical reports: daily net revenue, service retention, and parts sales</li>
+                        <li>Collected and analyzed data across departments using SQL, Oracle, and Azure</li>
+                        <li>Created interactive dashboards in Power BI to support executive and dealer decision-making</li>
+                        <li>Automated report delivery using Power Automate, improving distribution efficiency</li>
+                        <li>Led BI training and SOP creation to enhance team-wide analytics capabilities</li>
+                    </ul>
+                </div>
+
+                <div class="job">
+                    <h3>Technical Support Engineer (Power BI)</h3>
+                    <div class="meta">Shanghai Wicresoft • June 2021 - June 2022</div>
+                    <ul>
+                        <li>Supported clients in Power BI performance tuning and dashboard creation</li>
+                        <li>Built dashboards with SQL and Power BI; reduced report load times by approximately 50%</li>
+                        <li>Provided training to new team members and maintained strong client relationships</li>
+                        <li>Developed Python proficiency (Pandas, NumPy, Matplotlib) for data analysis</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <section id="projects" class="projects">
+            <h2>Selected Projects</h2>
+            <div class="projects-grid">
+                <div class="project">
+                    <h3>Daily Net Revenue Report</h3>
+                    <div class="duration">1 month</div>
+                    <p>Created automated daily revenue reports for after-sales department executives, providing real-time visibility into revenue performance.</p>
+                    <div class="tags">
+                        <span class="tag">Power BI</span>
+                        <span class="tag">SQL</span>
+                        <span class="tag">Power Automate</span>
+                    </div>
+                </div>
+
+                <div class="project">
+                    <h3>Service Retention Report</h3>
+                    <div class="duration">6 months</div>
+                    <p>Analyzed customer behavior to create monthly KPI reports, increasing retention by 3% through data-driven insights.</p>
+                    <div class="tags">
+                        <span class="tag">Power BI</span>
+                        <span class="tag">SQL</span>
+                        <span class="tag">Customer Analytics</span>
+                    </div>
+                </div>
+
+                <div class="project">
+                    <h3>Parts Sales Analysis</h3>
+                    <div class="duration">Ongoing</div>
+                    <p>Migrated reporting from Tableau to Power BI. Identified top/bottom-selling parts to optimize pricing strategy and inventory management.</p>
+                    <div class="tags">
+                        <span class="tag">Power BI</span>
+                        <span class="tag">Tableau</span>
+                        <span class="tag">Sales Analytics</span>
+                    </div>
+                </div>
+
+                <div class="project">
+                    <h3>Executive Front Line Dashboard</h3>
+                    <div class="duration">6 months</div>
+                    <p>Delivered 16 KPI dashboards to field managers and executives. Enabled drill-down to technician-level performance for granular operational insights.</p>
+                    <div class="tags">
+                        <span class="tag">Power BI</span>
+                        <span class="tag">Azure SQL</span>
+                        <span class="tag">DAX</span>
+                    </div>
+                </div>
+
+                <div class="project">
+                    <h3>Fabric Migration & Pipeline Setup</h3>
+                    <div class="duration">Ongoing</div>
+                    <p>Led migration from Power BI Premium Per User to Microsoft Fabric. Set up deployment pipelines and optimized workspace performance.</p>
+                    <div class="tags">
+                        <span class="tag">Microsoft Fabric</span>
+                        <span class="tag">Lakehouse</span>
+                        <span class="tag">Azure DevOps</span>
+                    </div>
+                </div>
+
+                <div class="project">
+                    <h3>Python Data Transformation Pipeline</h3>
+                    <div class="duration">Ongoing</div>
+                    <p>Built Python-based data transformation workflows in Fabric Notebooks to process and store data in Lakehouse for downstream analytics.</p>
+                    <div class="tags">
+                        <span class="tag">Python</span>
+                        <span class="tag">Fabric Notebooks</span>
+                        <span class="tag">Lakehouse</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="skills" class="skills">
+            <h2>Technical Skills</h2>
+            <div class="skills-grid">
+                <div class="skill-category">
+                    <h3>Microsoft Stack</h3>
+                    <ul>
+                        <li>Microsoft Fabric</li>
+                        <li>Power BI (DAX, Power Query)</li>
+                        <li>Azure Data Lake</li>
+                        <li>Azure SQL</li>
+                        <li>Azure DevOps</li>
+                        <li>Power Automate</li>
+                        <li>SSMS</li>
+                    </ul>
+                </div>
+
+                <div class="skill-category">
+                    <h3>Data & Analytics</h3>
+                    <ul>
+                        <li>SQL / T-SQL</li>
+                        <li>Oracle Database</li>
+                        <li>ETL/ELT Pipelines</li>
+                        <li>Data Modeling</li>
+                        <li>Pareto Analysis</li>
+                        <li>Growth-Share Matrix</li>
+                        <li>Tableau</li>
+                    </ul>
+                </div>
+
+                <div class="skill-category">
+                    <h3>Programming & Tools</h3>
+                    <ul>
+                        <li>Python (Pandas, NumPy, Matplotlib)</li>
+                        <li>Git / CI/CD</li>
+                        <li>Fabric Notebooks</li>
+                        <li>Excel (Advanced)</li>
+                    </ul>
+                </div>
+
+                <div class="skill-category">
+                    <h3>Certifications</h3>
+                    <ul>
+                        <li><a href="https://learn.microsoft.com/en-ca/users/taocui-8246/credentials/df2a3379147f0be4?ref=https%3A%2F%2Fwww.linkedin.com%2F" target="_blank" style="color: var(--blue); text-decoration: none;">Microsoft Certified: Power BI Data Analyst Associate</a></li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <section id="education" class="experience">
+            <h2>Education</h2>
+            <div class="education-item">
+                <h3>University of Toronto</h3>
+                <div class="degree">Bachelor of Science in Statistics</div>
+                <div class="date">September 2016 - April 2021</div>
+            </div>
+        </section>
+
+        <section id="contact" class="contact">
+            <h2>Get in Touch</h2>
+            <p>Open to consulting projects and full-time opportunities.</p>
+            <div class="contact-links">
+                <a href="mailto:tony88894@gmail.com">tony88894@gmail.com</a>
+                <a href="https://www.linkedin.com/in/tao-cui-0a269a244">LinkedIn</a>
+                <a href="https://github.com/taocui">GitHub</a>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <p>© 2024 Tao Cui</p>
+    </footer>
+
+    <script>
+        // Smooth scroll
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    window.scrollTo({
+                        top: target.offsetTop - 70,
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+    </script>
+</body>
+</html>
